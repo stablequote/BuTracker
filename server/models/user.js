@@ -3,6 +3,14 @@ const schema = mongoose.Schema;
 const Issue = require('./issue');
 
 const userSchema = new schema({
+    firstName: {
+        type: 'string',
+        required: true
+    },
+    lastName: {
+        type: 'string',
+        required: false
+    },
     email: {
         type: String,
         required: false

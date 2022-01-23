@@ -5,9 +5,6 @@ require('dotenv').config();
 const app = express();
 
 // const config = require('../config/config')
-// const project = require('./models/project')
-// const issue = require('./models/issue')
-// const user = require('./models/user')
 
 // importing routes
 const userRoutes = require('./routes/user.routes');
@@ -19,7 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/projects', projectRoutes);
 app.use('/issue', issueRoutes);
 app.use('/user', userRoutes);
-
 app.use(
     auth({
       authRequired: false,
@@ -32,7 +28,6 @@ app.use(
     })
 );
 
-
 // mongoose connection
 mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
@@ -44,7 +39,6 @@ mongoose.connect(process.env.MONGODB_URI)
 })
 
 // routes
-
 app.get('/', (req, res) => {
     res.send('Back end')
 })
@@ -53,12 +47,6 @@ app.get('/', (req, res) => {
 app.get('/private', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : res.redirect('/login'));
 });
-
-// project > issues
-// app.get('/projects', async (req, res) => {
-//     const projects = await project.find()
-//     res.send(projects)
-// })
 
 app.listen(5002, () => {
     console.log('Server running on port 5002');
