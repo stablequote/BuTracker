@@ -7,6 +7,7 @@ const issueController = require('../controller/issue.controller');
 
 // create issue (post)
 router.post('/create', issueController.createIssue)
+router.post('/:id/add-comment', issueController.createIssueComment)
 
 // list all issues
 router.get('/', issueController.getIssues)

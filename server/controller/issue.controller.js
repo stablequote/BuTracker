@@ -15,6 +15,21 @@ const createIssue = async (req, res) => {
     }
 }
 
+const createIssueComment = async (req, res) => {
+    const comment = req.body.comment;
+    const { id } = req.params;
+    try{
+        const newComment = await Issue.findByIdAndUpdate(id, { comment: comment })
+        await newComment.save();
+        return res.status(200).json({
+            message: "Successfully created comment!"
+        })
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
 const getIssues = async (req, res) => {
     const issues = await Issue.find({});
     res.send(issues);
@@ -28,7 +43,7 @@ const getIssue = async (req, res) => {
 
 const updateIssue = async (req, res) => {
     const { id } = req.params;
-    const issue = await Issue.findByIdAndUpdate(id)
+    const issue = await Issue.findByIdAndUpdate(id, req.body)
     res.send(issue);
 }
 
@@ -39,5 +54,5 @@ const deleteIssue = async (req, res) => {
 }
 
 module.exports = {
-    createIssue, getIssues, getIssue, updateIssue, deleteIssue
+    createIssue, getIssues, getIssue, updateIssue, deleteIssue, createIssueComment
 }

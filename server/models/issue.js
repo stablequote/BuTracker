@@ -32,27 +32,31 @@ const issueSchema = new schema({
         type: String,
     },
     image: {
-        type: String,
+        data: Buffer,
+        contentType: String
     },
     assignedBy: {
         type: String,
-        required: true
+        // required: true
     },
     assignee: {
         type: String,
-        required: true
+        // required: true
     },
     category: {
         type: String,
-        required: true
+        // required: true
     },
     file: {
-        type: String,
+        data: Buffer,
+        contentType: String
     },
     history: {
         type: String,
     }
     
+}, {
+    timestamps: true,
 })
 
 const Issue = mongoose.model('Issue', issueSchema);

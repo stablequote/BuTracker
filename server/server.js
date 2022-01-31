@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const { auth } = require('express-openid-connect');
 require('dotenv').config();
 const app = express();
@@ -13,6 +14,7 @@ const projectRoutes = require('./routes/project.routes');
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use('/projects', projectRoutes);
 app.use('/issue', issueRoutes);
 app.use('/user', userRoutes);
