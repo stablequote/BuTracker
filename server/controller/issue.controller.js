@@ -24,6 +24,7 @@ const createIssueComment = async (req, res) => {
         return res.status(200).json({
             message: "Successfully created comment!"
         })
+        res.redirect('/');
     }
     catch(err) {
         console.log(err);

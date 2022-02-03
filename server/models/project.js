@@ -31,11 +31,11 @@ const projectSchema = new schema({
     },
     assignedBy: {
         type: String,
-        required: true
+        required: false
     },
     assignee: {
         type: String,
-        required: true
+        required: false
     },
     issues: [
         {type: schema.Types.ObjectId, ref: 'Issue'}
