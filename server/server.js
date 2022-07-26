@@ -12,6 +12,8 @@ const userRoutes = require('./routes/user.routes');
 const issueRoutes = require('./routes/issue.routes');
 const projectRoutes = require('./routes/project.routes');
 
+let port = process.env.PORT
+
 // middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -50,6 +52,6 @@ app.get('/private', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : res.redirect('/login'));
 });
 
-app.listen(5002, () => {
-    console.log('Server running on port 5002');
+app.listen(port || 5000, () => {
+    console.log(`Server running on ${port}`);
 })
