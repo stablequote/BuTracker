@@ -5,7 +5,7 @@ function ListProjects() {
     const [project, setProject] = useState([]);
 
     useEffect(() => {
-        const res = axios.get('/projects').then((res) => setProject(res.data))
+        const res = axios.get('https://butrackerapi.herokuapp.com/projects').then((res) => setProject(res.data))
     }, [])
   return <div>
       <ul>

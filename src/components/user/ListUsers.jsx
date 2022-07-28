@@ -5,7 +5,7 @@ function ListUsers() {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        const res = axios.get('/projects').then((res) => setUser(res.data))
+        axios.get('https://butrackerapi.herokuapp.com/users').then((res) => setUser(res.data))
     }, [])
   return <div>
       <ul>
